@@ -39,3 +39,299 @@
 	- failするサーバの数は？ 
 - elastic searchによるメタデータ検索
 - 柔軟なAPI
+
+# REST API
+
+## Put
+|         | API Info    |
+| ------- |:-------------:|
+|Method| PUT |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/put?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+| ------- |:-------------:|
+|apikey *| API_KEY |
+
+### body
+
+````
+{
+   "streams" : [ 
+      { "cid" : "ch1",
+        "points":[
+          {"t":"2013-04-22T00:35:43Z","v":"41"},
+          {"t":"2013-04-22T00:55:43Z","v":"84"},
+          {"t":"2013-04-22T01:15:43Z","v":"41"},
+          {"t":"2013-04-22T01:35:43Z","v":"83"}
+        ],
+        "current" : "33"
+      },
+      { "cid" : "ch2",
+        "points":[
+          {"t":"2013-04-22T00:35:43Z","v":"revalue"},
+          {"t":"2013-04-22T00:55:43Z","v":"string value"},
+          {"t":"2013-04-22T01:15:43Z","v":"any string"},
+          {"t":"2013-04-22T01:35:43Z","v"":"structured data"}
+        ],
+        "current" : "test"      
+      }
+   ]
+}
+
+````
+
+````
+{
+   "streams" : [ 
+     { "cid" : "ch1",
+       "current" : "33"
+     },
+     {  "cid" : "ch2",
+        "current" : "test"      
+     }
+   ]
+}
+
+````
+
+### response
+
+## Get (points)
+|         | API Info    |
+| ------- |:-------------:|
+|Method| GET |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/getpoint?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+|time *| 2014-05-20T11:01:46Z, now |
+
+### body
+
+````
+
+````
+
+### response
+
+````
+{
+  "id": 121601,
+　"title": "Demo",
+　"private": "false",
+　"feed": "https://api.xively.com/v2/feeds/121601.json",
+　"status": "frozen",
+　"updated": "2013-04-23T03:25:48.686462Z",
+　"created": "2013-03-29T15:50:43.398788Z",
+　"datastreams": [
+ {
+ 	"id": "ch1",
+ 	"current": "333",
+ 	"t": "2013-04-23T01:10:02.986063Z",
+ 	"max": "333.0",
+ 	"min": "333.0"},
+ {
+ 	"id": "ch2",
+ 	"current_value": "value",
+ 	"at": "2013-04-23T00:40:34.032979Z"},
+ ]
+}
+````
+
+## Get (range)
+|         | API Info    |
+| ------- |:-------------:|
+|Method| GET |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/getrange?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+|from| 2013-04-22T00:35:46Z |
+|to | 2013-04-22T01:50:46Z|
+|delta | +13343 / -13333 [sec]|
+
+
+### body
+
+````
+
+````
+
+### response
+
+````
+{
+　  "streams" : [ 
+     { "cid" : "ch1",
+       "points":[
+         {"t":"2013-04-22T00:35:43Z","v":"41"},
+         {"t":"2013-04-22T00:55:43Z","v":"84"},
+         {"t":"2013-04-22T01:15:43Z","v":"41"},
+         {"t":"2013-04-22T01:35:43Z","v":"83"}
+       ],
+       "current" : "33"
+     },
+     { "cid" : "ch2",
+       "points":[
+         {"t":"2013-04-22T00:35:43Z","v":"revalue"},
+         {"t":"2013-04-22T00:55:43Z","v":"string value"},
+         {"t":"2013-04-22T01:15:43Z","v":"any string"},
+         {"t":"2013-04-22T01:35:43Z","v"":"structured data"}
+       ],
+       "current" : "test"
+     }
+   ]
+}
+````
+## Delete (point)
+|         | API Info    |
+| ------- |:-------------:|
+|Method| DELETE |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/delpoint?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+|cid *| ch1 |
+|time *| 2013-04-22T00:35:46Z |
+
+### body
+
+````
+````
+
+### response
+
+````
+200 OK
+````
+
+## Delete (range)
+|         | API Info    |
+| ------- |:-------------:|
+|Method| DELETE |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/delrange?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+|cid *| ch1 |
+|from| 2013-04-22T00:35:46Z |
+|to | 2013-04-22T01:50:46Z|
+|delta | +13343 / -13333 [sec]|
+
+
+### body
+
+````
+````
+
+### response
+
+````
+200 OK
+````
+
+## Delete (stream)
+|         | API Info    |
+| ------- |:-------------:|
+|Method| DELETE |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/delstream?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+
+### body
+
+````
+````
+
+### response
+
+````
+200 OK
+````
+
+# MetaSearch API
+## search
+|         | API Info    |
+| ------- |:-------------:|
+|Method| GET / POST |
+|Base URL| https://lb.bakfoo.com|
+|Endpoint| /api/v2/sereis/SERIES_ID/search?|
+|Format  | JSON |
+
+### parameters
+
+|parameter | example |
+|-|:-:|
+|apikey *| API_KEY |
+|q| 検索パラメータ，AND, ORが使える |
+|from | 2013-04-22T01:50:46Z|
+|to | 2013-04-22T01:50:46Z|
+
+
+### body
+
+````
+
+````
+
+### response
+
+````
+{
+　  "streams" : [ 
+     { "cid" : "ch1",
+       "points":[
+         {"t":"2013-04-22T00:35:43Z","v":"41"},
+         {"t":"2013-04-22T00:55:43Z","v":"84"},
+         {"t":"2013-04-22T01:15:43Z","v":"41"},
+         {"t":"2013-04-22T01:35:43Z","v":"83"}
+       ],
+       "current" : "33"
+     },
+     { "cid" : "ch2",
+       "points":[
+         {"t":"2013-04-22T00:35:43Z","v":"revalue"},
+         {"t":"2013-04-22T00:55:43Z","v":"string value"},
+         {"t":"2013-04-22T01:15:43Z","v":"any string"},
+         {"t":"2013-04-22T01:35:43Z","v"":"structured data"}
+       ],
+       "current" : "test"
+     }
+   ]
+}
+````
+
+# Streaming API
+# Range Streaming API
+# Trigger API
+# MTQQ Bridge
