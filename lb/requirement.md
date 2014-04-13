@@ -116,8 +116,8 @@
 
 ### parameters
 
-|parameter | example |
-|-|:-:|
+| parameter | example |
+| - | :-: |
 |apikey *| API_KEY |
 |time *| 2014-05-20T11:01:46Z, now |
 
