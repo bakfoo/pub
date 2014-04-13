@@ -117,7 +117,7 @@
 ### parameters
 
 | parameter | example |
-| - | :-: |
+| ------- |:-------------:|
 |apikey *| API_KEY |
 |time *| 2014-05-20T11:01:46Z, now |
 
@@ -164,7 +164,7 @@
 ### parameters
 
 |parameter | example |
-|-|:-:|
+| ------- |:-------------:|
 |apikey *| API_KEY |
 |from| 2013-04-22T00:35:46Z |
 |to | 2013-04-22T01:50:46Z|
@@ -214,7 +214,7 @@
 ### parameters
 
 |parameter | example |
-|-|:-:|
+| ------- |:-------------:|
 |apikey *| API_KEY |
 |cid *| ch1 |
 |time *| 2013-04-22T00:35:46Z |
@@ -241,7 +241,7 @@
 ### parameters
 
 |parameter | example |
-|-|:-:|
+| ------- |:-------------:|
 |apikey *| API_KEY |
 |cid *| ch1 |
 |from| 2013-04-22T00:35:46Z |
@@ -271,7 +271,7 @@
 ### parameters
 
 |parameter | example |
-|-|:-:|
+| ------- |:-------------:|
 |apikey *| API_KEY |
 
 ### body
@@ -297,7 +297,7 @@
 ### parameters
 
 |parameter | example |
-|-|:-:|
+| ------- |:-------------:|
 |apikey *| API_KEY |
 |q| 検索パラメータ，AND, ORが使える |
 |from | 2013-04-22T01:50:46Z|
